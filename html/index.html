@@ -15,10 +15,10 @@
 
    <div class="main-window">
 
-        <div class = "topline"> 
+        <div class = "topline unselectable"> 
 
             <div class = "coinbox-square center">
-                 <p id="coin-amount">0$</p>
+                <p id="coin-amount">coins</p>
              </div>
 
         </div>
@@ -28,10 +28,8 @@
         <div class="midline">
 
             <div class="clickbox">
-                <div class="bosshealth-line center">
-                    <div class="bosshealth-box center">hp monstre
-                    </div>
-
+                <div class="damage-line center unselectable">
+                   
                     <div class = "damagebox-square">
                         <div class="dps-box center">
                         dps box
@@ -45,9 +43,19 @@
 
                 </div>
 
-                <div id="monster-box" class="monster-box center">
-                    <div class="monster-display center">
+                <div id="monster-box" class="monster-box" onclick="monsterOnClick()">
+
+                    <div class="bosshealth-line center unselectable">
+                         <div id="monsterHealth" class="bosshealth-box center">
+                         </div>
                     </div>
+
+                    <div class="monster-display-line center">   
+
+                        <div class="monster-display center">
+                        </div>
+                    </div>
+                    
                 </div>
 
             </div>
@@ -82,6 +90,7 @@
 
 
 
+    <script type="text/javascript" src="../js/script.js"> </script>
 
 
 </body>
