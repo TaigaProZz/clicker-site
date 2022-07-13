@@ -17,9 +17,7 @@
 
         <div class = "topline unselectable"> 
 
-            <div class = "coinbox-square center">
-                <p id="coin-amount">coins</p>
-             </div>
+           
 
         </div>
 
@@ -28,16 +26,33 @@
         <div class="midline">
 
             <div class="clickbox">
+
+                <div class="player-name center">
+                    <span id="playername">Player 1</span> 
+                </div>
+
+                <div class = "coinbox-box center">
+                    <span id="coin-amount">coins</span>
+                 </div>
+
+
+               
+
                 <div class="damage-line center unselectable">
                    
                     <div class = "damagebox-square">
                         <div class="dps-box center">
-                        dps box
+                            <span id="dps">DPS</span>
                         </div>
 
                          <div class="dpclick-box center">
-                        dpclick box
+                            <span id="dpc">DPC</span>
                          </div>
+
+
+                        
+                         
+
 
                     </div>
 
@@ -66,26 +81,15 @@
         
         </div>
 
-
-
         <div class="botline center">
         
-            
+            <a id="exportJSON"  onclick="exportJson(this);"><i class="icon-download"></i>export json</a>
+            <input type="file" id="json" onchange="importJson(this)">
         </div>
+       
 
     </div>
-
-
-
-
 </div>
-
- 
-
-
-
-
-
 
 
 

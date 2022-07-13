@@ -28,33 +28,6 @@ body{
 }
 
 
-.topline {
-    width: 100%;
-    height: 6%;
-    margin-bottom: 1%;
-
-
-
-}
-
-.coinbox-square {
-    width: 10%;
-    height: 70%;
-    margin-right: 20%;
-    margin-top: 1%;
-    float: right;
-    background-color: yellow;
-    border: solid 1px;
-    border-color: black;
-
-}
-
-
-#coin-amount {
-    color: black;
-}
-
-
 
 .midline {
     width: 100%;
@@ -65,12 +38,17 @@ body{
 
 .clickbox {
     width: 60%;
-    height: 100%;
+    height: 80%;
     float: left;
     margin-left: 10%;
+}
 
-   
-
+.player-name {
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1%;
+    margin-left: 1%;
 }
 
 .damage-line {
@@ -81,9 +59,24 @@ body{
 
 
 .damagebox-square {
-    width: 40%;
+    width: 80%;
     height: 70%;
+}
 
+.coinbox-box {
+    width: 10%;
+    height: 10%;
+    float: right;
+    background-color: whitesmoke;
+    border: solid 1px;
+    border-color: black;
+    margin-bottom: 1%;
+
+}
+
+
+#coin-amount {
+    color: black;
 }
 
 
@@ -91,20 +84,33 @@ body{
     width: 40%;
     height: 100%;
     float: left;
-    background: blue;
+    background: white;
     border: solid 1px;
     border-color: black;
 
 }
 
 
+
 .dpclick-box {
     width: 40%;
     height: 100%;
     float: right;
-    background: purple;
+    background: white;
     border: solid 1px;
     border-color: black;
+}
+
+
+
+
+.botline {
+   
+    width: 100%;
+    height: 10%;
+    margin-top: 1%;
+    background-color: rgba(90, 90, 90, 0.50);
+
 }
 
 
