@@ -46,10 +46,12 @@ class Player {
 	}
 }
 
-// call functions on load
+
+
 
 // create player
-var player = new Player('Taiga', 2)
+
+var player = new Player("taigza", 1)
 var playernameId = document.getElementById('playername')
 playernameId.innerHTML = player.getName()
 
@@ -64,10 +66,13 @@ setDpc() // set dpc to player attack
 
 
 
+var getMonsterHealth = newMonster.getHealth()
+
+changeBarColorByHealthPourcentage(getMonsterHealth)
+
+
 // click event for player attack
 function monsterOnClick() {
-	var getMonsterHealth = newMonster.getHealth()
-	
 
 	if (getMonsterHealth > player.attack) {
 		getMonsterHealth = getMonsterHealth - player.attack
@@ -83,12 +88,42 @@ function monsterOnClick() {
 
     }
 	getMonsterHealthId.innerHTML = getMonsterHealth
+	changeBarColorByHealthPourcentage(getMonsterHealth)
+
 }
+
+
+
+// change bar color by health pourcentage
+function changeBarColorByHealthPourcentage(health) {
+	var barcolor = document.getElementById('bosshealth-bar')
+	var healthpourcentage = health / 10 * 100
+	barcolor.style.width = healthpourcentage + '%'
+
+	if (healthpourcentage > 99) {
+		barcolor.style.backgroundColor = 'green'
+	}
+
+	if (healthpourcentage < 70) {
+		barcolor.style.backgroundColor = 'orange'
+	}
+	
+	if (healthpourcentage < 40) {
+		barcolor.style.backgroundColor = 'yellow'
+	}
+
+	if (healthpourcentage < 20) {
+		barcolor.style.backgroundColor = 'red'
+	}
+
+
+}
+
 
 
 console.log(player.attack);
 
-// TODO: add dps from characters 
+// TODO: add dps from characters y
 function setDps() {
 	var dps = document.getElementById('dps')
 	dps.innerHTML = player.attack
@@ -141,3 +176,5 @@ function setDataFromJson(json) {
 	newMonster.setHealth(json.monster_health)
 	getMonsterHealthId.innerHTML = newMonster.getHealth()
 }
+
+

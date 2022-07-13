@@ -17,8 +17,6 @@
 
         <div class = "topline unselectable"> 
 
-           
-
         </div>
 
 
@@ -58,14 +56,27 @@
 
                 </div>
 
-                <div id="monster-box" class="monster-box" onclick="monsterOnClick()">
+                <div id="monster-box" class="monster-box" >
 
                     <div class="bosshealth-line center unselectable">
-                         <div id="monsterHealth" class="bosshealth-box center">
-                         </div>
+
+                        <div id="bosshealth-box" class="bosshealth-box center">
+
+                        
+                        
+                            <div id="bosshealth-bar" class="bosshealth-bar center">
+                                <span id="monsterHealth"></span> 
+
+                            </div> 
+
+
+                           
+                        </div> 
+                         
+                         
                     </div>
 
-                    <div class="monster-display-line center">   
+                    <div class="monster-display-line center" onclick="monsterOnClick()">   
 
                         <div class="monster-display center">
                         </div>
@@ -88,6 +99,9 @@
         </div>
        
 
+
+
+
     </div>
 </div>
 
@@ -95,6 +109,7 @@
 
 
     <script type="text/javascript" src="../js/script.js"> </script>
+    
 
 
 </body>
