@@ -20,9 +20,10 @@ class Monster {
 
 // player class 
 class Player {
-	constructor(name, attack) {
+	constructor(name, attack, bank) {
 		this.name = name;
 		this.attack = attack;
+		this.bank = bank;
 	}
 
 	getName() {
@@ -41,16 +42,24 @@ class Player {
 		return this.attack
 	}
 
-	getHealth() {
-		return this.health
+	setBank(bank) {
+		this.bank = bank
 	}
+
+	getBank () {
+		return this.bank 
+	}
+
 }
 
 // create player
-
-var player = new Player("taigza", 1)
 var playernameId = document.getElementById('playername')
+var bankId = document.getElementById('bank-box-text')
+var player = new Player("taigza", 1, 100)
+
+var getBank = player.getBank()
 playernameId.innerHTML = player.getName()
+bankId.innerHTML = getBank + ' $'
 
 // and monster 
 var newMonster = new Monster(10, 'Psykokwak')
@@ -64,6 +73,7 @@ console.log(player.getName() + ' has ' + player.attack + ' attack' + ' and ' + n
 
 setDpc() // set dpc to player attack
 
+
 var getMonsterHealth = newMonster.getHealth()
 changeBarColorByHealthPourcentage(getMonsterHealth)
 
@@ -72,15 +82,17 @@ function monsterOnClick() {
 
 	if (getMonsterHealth > player.attack) {
 		getMonsterHealth = getMonsterHealth - player.attack
-		newMonster.setHealth(getMonsterHealth )
+		newMonster.setHealth(getMonsterHealth)
 		console.log(newMonster.getName() + ' is alive with ' + getMonsterHealth + ' health')
 		
 	} else {
 	
-		console.log('You killed the monster!');
+		console.log('You killed the monster! ' + getBank + ' + 10$')
 		newMonster.setHealth(10)
 		getMonsterHealth = newMonster.getHealth()
 
+		getBank = getBank + 10
+		bankId.innerHTML = getBank + ' $'
 
     }
 	getMonsterHealthId.innerHTML = getMonsterHealth + ' / '  + getMonsterHealthBase + ' hp'

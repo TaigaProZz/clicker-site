@@ -67,7 +67,7 @@ body{
     height: 70%;
 }
 
-.coinbox-box {
+.bank-box {
     width: 10%;
     height: 10%;
     float: right;
@@ -79,7 +79,7 @@ body{
 }
 
 
-#coin-amount {
+#bank-box-text {
     color: black;
 }
 
@@ -231,7 +231,7 @@ body{
 
 
 .border {
-    background-color: #2021243;
+    background-color: 2021243;
     border-radius: 25px;
     border-color: white;
     padding: 20px;
