@@ -33,7 +33,7 @@ body{
 
 
 
-.midline {
+.mid-container {
     width: 100%;
     height: 80%;
 }
@@ -55,7 +55,7 @@ body{
     margin-left: 1%;
 }
 
-.damage-line {
+.damage-container {
     width: 100%;
     height: 10%;
     margin-bottom: 2px;
@@ -108,16 +108,6 @@ body{
 
 
 
-.botline {
-   
-    width: 100%;
-    height: 10%;
-    margin-top: 1%;
-    background-color: rgba(90, 90, 90, 0.50);
-
-}
-
-
 
 .monster-box {
     width: 100%;
@@ -130,7 +120,7 @@ body{
     
 }
 
-.bosshealth-line {
+.bosshealth-container {
     width:100%;
     height: 10%;
 
@@ -145,18 +135,7 @@ body{
     border-color: black;
 }
 
-#monsterHealthBox {
-    width:  100%;
-    height: 100%;
-    background-color: grey;
-}
 
-
-#bosshealth-bar {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-}
 
 .bosshealth-box {
     width: 45%;
@@ -166,6 +145,35 @@ body{
     border: solid 1px;
     border-color: black;
 }
+
+
+.boxbox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: rgba(90, 90, 90, 0.50);
+    border: solid 1px;
+    border-color: black;
+}
+
+.bosshealth-bar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.monsterHealth {
+    color: black;
+    font-size: 1em;
+    font-weight: bold;
+   
+    z-index: 1;
+
+}
+
+
 
 
 .monster-display-line {
@@ -198,6 +206,14 @@ body{
 }
 
 
+.botline {
+   
+    width: 100%;
+    height: 10%;
+    margin-top: 1%;
+    background-color: rgba(90, 90, 90, 0.50);
+
+}
 
 
 

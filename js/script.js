@@ -46,9 +46,6 @@ class Player {
 	}
 }
 
-
-
-
 // create player
 
 var player = new Player("taigza", 1)
@@ -58,25 +55,24 @@ playernameId.innerHTML = player.getName()
 // and monster 
 var newMonster = new Monster(10, 'Psykokwak')
 var getMonsterHealthId = document.getElementById('monsterHealth')
-getMonsterHealthId.innerHTML = newMonster.getHealth()
+const getMonsterHealthBase = newMonster.getHealth()
 
+getMonsterHealthId.innerHTML = newMonster.getHealth() + ' / '  + getMonsterHealthBase + ' hp'
+
+console.log(getMonsterHealthBase);
 console.log(player.getName() + ' has ' + player.attack + ' attack' + ' and ' + newMonster.getName() + ' is alive with '  +  newMonster.getHealth() + ' health')
 
 setDpc() // set dpc to player attack
 
-
-
 var getMonsterHealth = newMonster.getHealth()
-
 changeBarColorByHealthPourcentage(getMonsterHealth)
-
 
 // click event for player attack
 function monsterOnClick() {
 
 	if (getMonsterHealth > player.attack) {
 		getMonsterHealth = getMonsterHealth - player.attack
-		newMonster.setHealth(getMonsterHealth)
+		newMonster.setHealth(getMonsterHealth )
 		console.log(newMonster.getName() + ' is alive with ' + getMonsterHealth + ' health')
 		
 	} else {
@@ -87,7 +83,7 @@ function monsterOnClick() {
 
 
     }
-	getMonsterHealthId.innerHTML = getMonsterHealth
+	getMonsterHealthId.innerHTML = getMonsterHealth + ' / '  + getMonsterHealthBase + ' hp'
 	changeBarColorByHealthPourcentage(getMonsterHealth)
 
 }
