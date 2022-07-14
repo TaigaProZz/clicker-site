@@ -52,14 +52,36 @@ class Player {
 
 }
 
-// create player
+
+
+
+// create player 
+var localStorageName = localStorage.getItem('playername')
+var localStorageAttack = parseInt(localStorage.getItem('attack'))
+var localStorageBank = parseInt(localStorage.getItem('bank'))
+if (localStorageName == null){
+	localStorageName =  prompt('Enter your name')
+	localStorage.setItem('playername', localStorageName)
+	localStorageAttack = 1
+	localStorage.setItem('attack', localStorageAttack)
+	localStorageBank = 0
+	localStorage.setItem('bank', localStorageBank)
+
+}
+
+var player = new Player(localStorageName, localStorageAttack, localStorageBank)
+
+
 var playernameId = document.getElementById('playername')
 var bankId = document.getElementById('bank-box-text')
-var player = new Player("taigza", 1, 100)
 
 var getBank = player.getBank()
+
+console.log(getBank);
 playernameId.innerHTML = player.getName()
 bankId.innerHTML = getBank + ' $'
+
+
 
 // and monster 
 var newMonster = new Monster(10, 'Psykokwak')
@@ -87,13 +109,14 @@ function monsterOnClick() {
 		
 	} else {
 	
-		console.log('You killed the monster! ' + getBank + ' + 10$')
+		console.log('You killed ' + newMonster.getName() + '! You earned ' + getBank + ' + 1$')
 		newMonster.setHealth(10)
 		getMonsterHealth = newMonster.getHealth()
 
-		getBank = getBank + 10
-		bankId.innerHTML = getBank + ' $'
 
+		getBank = getBank + 1
+		bankId.innerHTML = getBank + ' $'
+		saveLocalStorage()
     }
 	getMonsterHealthId.innerHTML = getMonsterHealth + ' / '  + getMonsterHealthBase + ' hp'
 	changeBarColorByHealthPourcentage(getMonsterHealth)
@@ -128,16 +151,11 @@ function changeBarColorByHealthPourcentage(health) {
 }
 
 
-
-console.log(player.attack);
-
 // TODO: add dps from characters y
 function setDps() {
 	var dps = document.getElementById('dps')
 	dps.innerHTML = player.attack
 }
-
-
 
 function setDpc() {
 	var dpc = document.getElementById('dpc')
@@ -146,12 +164,22 @@ function setDpc() {
 
 
 
+function saveLocalStorage() {
+	localStorage.setItem('playername', player.getName())
+	localStorage.setItem('attack', player.getAttack())
+	localStorage.setItem('bank', getBank)
+
+}
+
+
+
+
 // export json file with player and monster data 
 function exportJson(el) {
 	var obj = {
 		name: player.getName(),
 		player_attack: player.attack,
-		monster_health: newMonster.getHealth()
+		bank: getBank
 	};
 	var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
 	el.setAttribute("href", "data:" + data);
@@ -180,9 +208,16 @@ function importJson(el) {
 // set data from json file with player and monster data
 function setDataFromJson(json) {
 	player.setName(json.name)
+	playernameId.innerHTML = player.getName()
+	localStorage.setItem('playername', player.getName())
+
 	player.setAttack(json.player_attack)
-	newMonster.setHealth(json.monster_health)
-	getMonsterHealthId.innerHTML = newMonster.getHealth()
+	setDpc()
+	localStorage.setItem('attack', player.getAttack())
+
+	parseInt(player.setBank(json.bank))
+	bankId.innerHTML = player.getBank() + ' $'
+	localStorage.setItem('bank', player.getBank())
 }
 
 
