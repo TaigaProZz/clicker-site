@@ -13,23 +13,19 @@
 <div class="main center">
 
 
-   <div class="main-window">
+   <div class="main-window" >
 
-        <div class = "topline unselectable"> 
-
+        <div class="topline unselectable"> 
         </div>
 
-
-
         <div class="mid-container">
-
             <div class="clickbox">
 
                 <div class="player-name center">
-                    <span id="playername"></span> 
+                    <span id="playername" class="unselectable"></span> 
                 </div>
 
-                <div class = "bank-box center">
+                <div class = "bank-box center unselectable">
                     <span id="bank-box-text"></span>
                  </div>
 
@@ -56,8 +52,8 @@
 
                 </div>
 
-                <div id="monster-box" class="monster-box" >
-                    <div class="bosshealth-container center unselectable">
+                <div id="monster-box" class="monster-box unselectable" >
+                    <div class="bosshealth-container center">
 
                         <div id="bosshealth-box" class="bosshealth-box">
                             <div class="boxbox"> 
@@ -75,7 +71,6 @@
                     </div>
 
                     <div class="monster-display-line center" onclick="monsterOnClick()">   
-
                         <div class="monster-display center">
                         </div>
                     </div>
@@ -84,21 +79,17 @@
 
             </div>
            
-            <div class="characters-box center">
+            <div class="characters-box center unselectable">
             characters box
             </div>
         
         </div>
 
-        <div class="botline center">
-        
+        <div class="botline center unselectable">
             <a id="exportJSON"  onclick="exportJson(this);"><i class="icon-download"></i>export json</a>
             <input type="file" id="json" onchange="importJson(this)">
         </div>
-       
-
-
-
+    
 
     </div>
 </div>
@@ -107,7 +98,8 @@
 
 
     <script type="text/javascript" src="../js/script.js"> </script>
-    
+    <script type="text/javascript" src="../js/ripple.js"></script>
+
 
 
 </body>

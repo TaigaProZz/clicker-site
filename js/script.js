@@ -59,6 +59,7 @@ class Player {
 var localStorageName = localStorage.getItem('playername')
 var localStorageAttack = parseInt(localStorage.getItem('attack'))
 var localStorageBank = parseInt(localStorage.getItem('bank'))
+
 if (localStorageName == null){
 	localStorageName =  prompt('Enter your name')
 	localStorage.setItem('playername', localStorageName)
@@ -153,8 +154,8 @@ function changeBarColorByHealthPourcentage(health) {
 
 // TODO: add dps from characters y
 function setDps() {
-	var dps = document.getElementById('dps')
-	dps.innerHTML = player.attack
+	//var dps = document.getElementById('dps')
+	//dps.innerHTML = character.attack
 }
 
 function setDpc() {
@@ -164,6 +165,11 @@ function setDpc() {
 
 
 
+
+
+
+/////// SAVE DATA ///////
+
 function saveLocalStorage() {
 	localStorage.setItem('playername', player.getName())
 	localStorage.setItem('attack', player.getAttack())
@@ -172,13 +178,11 @@ function saveLocalStorage() {
 }
 
 
-
-
 // export json file with player and monster data 
 function exportJson(el) {
 	var obj = {
 		name: player.getName(),
-		player_attack: player.attack,
+		playerattack: player.attack,
 		bank: getBank
 	};
 	var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
@@ -221,3 +225,16 @@ function setDataFromJson(json) {
 }
 
 
+function applyCursorRippleEffect(e) {
+	const ripple = document.createElement("div");
+ 
+	ripple.className = "ripple";
+	document.body.appendChild(ripple);
+ 
+   ripple.style.left = `${e.clientX}px`;
+   ripple.style.top = `${e.clientY}px`; 
+ 
+	ripple.style.animation = "ripple-effect .4s  linear";
+	ripple.onanimationend = () => document.body.removeChild(ripple);
+ 
+ }
