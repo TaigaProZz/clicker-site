@@ -1,3 +1,6 @@
+import {Player} from './player.js'
+
+
 // monster class
 class Monster {
 	constructor(health, name) {
@@ -18,38 +21,46 @@ class Monster {
 	}
 }
 
-// player class 
-class Player {
-	constructor(name, attack, bank) {
+
+
+
+
+class Character {
+	constructor(name, attack, level, price) {
 		this.name = name;
 		this.attack = attack;
-		this.bank = bank;
+		this.level = level;
+		this.price = price;
 	}
 
 	getName() {
 		return this.name
 	}
-
-	setName(name) {
-		this.name = name
+	getAttack() {
+		return this.attack
 	}
 
 	setAttack(attack) {
 		this.attack = attack
 	}
+
+	getLevel() {
+		return this.level
+	}
+
+	setLevel(level) {
+		this.level = level
+	}
+
 	
-	getAttack() {
-		return this.attack
+	getPrice() {
+		return this.price
 	}
 
-	setBank(bank) {
-		this.bank = bank
+	setPrice(price) {
+		this.price = price
 	}
-
-	getBank () {
-		return this.bank 
-	}
-
+	
 }
 
 
@@ -100,6 +111,7 @@ setDpc() // set dpc to player attack
 var getMonsterHealth = newMonster.getHealth()
 changeBarColorByHealthPourcentage(getMonsterHealth)
 
+document.getElementById('monsterOnClick').addEventListener('click', monsterOnClick);
 // click event for player attack
 function monsterOnClick() {
 
