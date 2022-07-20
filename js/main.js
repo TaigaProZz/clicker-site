@@ -7,23 +7,34 @@ import Save from './classes/save.js';
 var player = new Player();
 
 // Create the monster
-var monster = new Monster(10, 'Psykokwak');
+var monster = new Monster(20, 'Psykokwak');
 
 // Click on monster event
 $('#monsterOnClick').click(() => {
+	player = new Player();
+
 	let monsterHealth = monster.getHealth();
 	let monsterName = monster.getName();
 	let playerAttack = player.getAttack();
-	let playerBank = player.getBank();
+
 
 	if (monsterHealth > playerAttack) {
 		monsterHealth = monsterHealth - playerAttack;
 		monster.setHealth(monsterHealth);
-		console.log(monsterName + ' is alive with ' + monsterHealth + ' health');
+	
+
 	} else {
-		console.log('You killed ' + monsterName + '! You earned ' + playerBank + ' + 1$');
+		var playerBank = player.getBank();
+		
 		monster.resetHealth();
-		player.setBank(playerBank + 1);
+
+		playerBank = playerBank + 1;
+		player.setBank(playerBank);
+		// console.log(player.getBank());
+		// console.log(playerBank);
+
+
+
 	}
 });
 
@@ -32,4 +43,5 @@ var save = new Save(player, monster);
 
 // Characters
 var characters = new Characters();
-characters.display();
+characters.display(player);
+

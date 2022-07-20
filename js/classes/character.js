@@ -1,13 +1,15 @@
 export default class Character {
     #name = '';
-    #attack = 0;
+    #attack = 2;
     #level = 1;
     #price = 0;
 	#priceLevelUp = [0, 10, 20, 30];
 	#image = '';
 	#visible = '';
+	#bought = false;
+	#totalDps = 1;
 
-	constructor(name, attack, level, price, priceLevelUp, image, visible) {
+	constructor(name, attack, level, price, priceLevelUp, image, visible, bought, totalDps) {
 		this.#name = name;
 		this.#attack = attack;
 		this.#level = level;
@@ -15,7 +17,11 @@ export default class Character {
 		this.#priceLevelUp = priceLevelUp;
 		this.#image = image;
 		this.#visible = visible;
-        // document.getElementById('dps').innerHTML = "Dps = " + this.#attack;
+		this.#bought = bought;
+		this.#totalDps = totalDps;
+
+	
+		
 	}
 
 	getName() {
@@ -40,6 +46,17 @@ export default class Character {
 		return this.#visible;
 	}
 
+	getBought () {
+		return this.#bought;
+	}
+
+	getTotalDps() {
+		$('#dps').html('dps= ' + totalDps);
+		return this.#totalDps;
+
+	}
+	
+
 	setAttack(attack) {
 		this.#attack = attack;
 	}
@@ -49,4 +66,17 @@ export default class Character {
 	setPrice(price) {
 		this.#price = price;
 	}
+
+	setBought(bought) {
+		this.#bought = bought;
+	}
+
+	setTotalDps(totalDps) {
+
+		this.#totalDps = totalDps;
+		$('#dps').html('dps= ' + totalDps);
+
+	}
+
+
 }

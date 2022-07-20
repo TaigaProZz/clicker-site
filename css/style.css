@@ -226,7 +226,7 @@ body{
 }
 
 .character-name {
-    width: 96%;
+    width: 92%;
     text-align: center;
     position : absolute;
     color: whitesmoke;
@@ -237,10 +237,33 @@ body{
     text-decoration-color: antiquewhite;
 }
 
-.character-image {
+
+.character-attack {
+    width: 92%;
+    font-size: 1em;
+    text-align: center;
+    position : absolute;
+    font-weight: bold;
+    color: white;
+    margin-top: 10%;
+}
+
+.character-level {
+    width: 92%;
+    font-size: 1em;
+    text-align: center;
+    position : absolute;
+    font-weight: bold;
+    color: white;
+    margin-top: 15%;
+}
+
+
+
+.character-img-parent {
     width: 25%;
     height: 90%;
-    position : relative;
+    position : absolute;
     margin-top: 1%;
 
 }
@@ -248,23 +271,50 @@ body{
 
 
 
-#character1image, 
-#character2image,
-#character3image {
-    width : auto;
+.character-img {
+    width : 100%;
     height : 100%;
 
 }
 
-.character-attack {
-    width: auto;
-    height: 30%;
-    font-size: 1.2em;
-    font-weight: bold;
+
+.character-buy-btn {
+    width: 25%;
+    height: 70%;
+    right: 2%;
+    bottom: 10px;
+    position: absolute;
+    background-color: #202124;
+    border: solid 1px;
+    border-color: black;
     color: white;
-    position : absolute;
-    margin-left: 40%;
-    margin-top: 10%;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration-line: underline;
+    text-decoration-color: antiquewhite;
+    cursor: pointer;
+
+}
+
+
+.character-lvl-up-btn {
+    width: 25%;
+    height: 70%;
+    right: 2%;
+    bottom: 10px;
+    position: absolute;
+    background-color: #202124;
+    border: solid 1px;
+    border-color: black;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration-line: underline;
+    text-decoration-color: antiquewhite;
+    cursor: pointer;
+
 }
 
 

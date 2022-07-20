@@ -1,39 +1,44 @@
 export default class Monster {
+
+    #initialHealth = 0;
+    #health = 0;
+    #name = '';
+
 	constructor(health, name) {
-        this.initialHealth = health;
-		this.health = health;
-		this.name = name;
+        this.#initialHealth = health;
+		this.#health = health;
+		this.#name = name;
         
         this.displayHealth();
 	}
 
 
 	getName() {
-		return this.name
+		return this.#name
 	}
 
 	setHealth(hp) {
-		this.health = hp;
+		this.#health = hp;
         this.displayHealth();
 	}
 
 	getHealth() {
-		return this.health
+		return this.#health
 	}
 
     displayHealth() {
-        $('#monsterHealth').html(this.health + ' / '  + this.initialHealth + ' hp');
-        this.changeBarColorByHealthPourcentage(this.health);
+        $('#monsterHealth').html(this.#health + ' / '  + this.#initialHealth + ' hp');
+        this.changeBarColorByHealthPourcentage(this.#health);
     }
 
     resetHealth() {
-		this.health = this.initialHealth;
+		this.#health = this.#initialHealth;
         this.displayHealth();
 	}
 
     changeBarColorByHealthPourcentage(health) {
         var barcolor = $('#bosshealth-bar')
-        var healthpourcentage = health / 10 * 100
+        var healthpourcentage = health / this.#initialHealth * 100
         barcolor.css("width", healthpourcentage + '%');
     
         if (healthpourcentage > 99) {

@@ -39,13 +39,19 @@ export default class Player {
 	
 	setBank(bank) {
 		this.#bank = bank;
-		$('#bank-box-text').html(bank + ' $');
-		this.updateLocalStorage();
+		this.updateLocalStorageBank(bank);
+		$('#bank-box-text').html(this.#bank + ' $');
+
 	}
 
 	updateLocalStorage() {
 		localStorage.setItem('playername', this.#name);
 		localStorage.setItem('attack', this.#attack);
 		localStorage.setItem('bank', this.#bank);
+	}
+
+	updateLocalStorageBank(bank) {
+	
+		localStorage.setItem('bank', bank);
 	}
 }
