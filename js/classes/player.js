@@ -8,9 +8,9 @@ export default class Player {
 		this.#attack = localStorage.getItem('attack') ? parseInt(localStorage.getItem('attack')) : 1;
 		this.#bank = localStorage.getItem('bank') ? parseInt(localStorage.getItem('bank')) : 0;
 		
-		document.getElementById('playername').innerHTML = this.#name;
-		document.getElementById('dpc').innerHTML = "Dpc = " + this.#attack;
-		document.getElementById('bank-box-text').innerHTML = this.#bank + ' $';
+		$('#playername').html(this.#name);
+		$('#dpc').html("Dpc = " + this.#attack);
+		$('#bank-box-text').html(this.#bank + ' $');
 	}
 
 	getName() {
@@ -27,19 +27,19 @@ export default class Player {
 
 	setName(name) {
 		this.#name = name;
-		document.getElementById('playername').innerHTML = name;
+		$('#playername').html(name);
 		this.updateLocalStorage();
 	}
 
 	setAttack(attack) {
 		this.#attack = attack;
-		document.getElementById('dpc').innerHTML = "Dpc = " + attack;
+		$('#dpc').html("Dpc = " + attack);
 		this.updateLocalStorage();
 	}
 	
 	setBank(bank) {
 		this.#bank = bank;
-		document.getElementById('bank-box-text').innerHTML = bank + ' $';
+		$('#bank-box-text').html(bank + ' $');
 		this.updateLocalStorage();
 	}
 

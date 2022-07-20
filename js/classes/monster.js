@@ -22,7 +22,7 @@ export default class Monster {
 	}
 
     displayHealth() {
-        document.getElementById('monsterHealth').innerHTML = this.health + ' / '  + this.initialHealth + ' hp';
+        $('#monsterHealth').html(this.health + ' / '  + this.initialHealth + ' hp');
         this.changeBarColorByHealthPourcentage(this.health);
     }
 
@@ -32,24 +32,24 @@ export default class Monster {
 	}
 
     changeBarColorByHealthPourcentage(health) {
-        var barcolor = document.getElementById('bosshealth-bar')
+        var barcolor = $('#bosshealth-bar')
         var healthpourcentage = health / 10 * 100
-        barcolor.style.width = healthpourcentage + '%'
+        barcolor.css("width", healthpourcentage + '%');
     
         if (healthpourcentage > 99) {
-            barcolor.style.backgroundColor = 'green'
+            barcolor.css("backgroundColor", 'green');
         }
     
         if (healthpourcentage < 70) {
-            barcolor.style.backgroundColor = 'orange'
+            barcolor.css("backgroundColor", 'orange');
         }
         
         if (healthpourcentage < 40) {
-            barcolor.style.backgroundColor = 'yellow'
+            barcolor.css("backgroundColor", 'yellow');
         }
     
         if (healthpourcentage < 20) {
-            barcolor.style.backgroundColor = 'red'
+            barcolor.css("backgroundColor", 'red');
         }
     }
 }

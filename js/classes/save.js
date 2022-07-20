@@ -6,8 +6,8 @@ export default class Save {
 		this.#player = player;
         this.#monster = monster;
         
-        document.getElementById('exportJSON').addEventListener('click', this.exportJson.bind(this));
-        document.getElementById('importJSON').addEventListener('change', this.importJson.bind(this));
+        $('#exportJSON').click(this.exportJson.bind(this));
+        $('#importJSON').change(this.importJson.bind(this));
 	}
 
     exportJson() {
@@ -17,12 +17,12 @@ export default class Save {
             bank          : this.#player.getBank()
         };
         let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-        document.getElementById('exportJSON').setAttribute("href", "data:" + data);
-        document.getElementById('exportJSON').setAttribute("download", "data.json");
+        $('#exportJSON').setAttribute("href", "data:" + data);
+        $('#exportJSON').setAttribute("download", "data.json");
     }
 
     importJson() {
-        var file = document.getElementById('importJSON').files[0];
+        var file = $('#importJSON').files[0];
         if (file) { 
             var reader = new FileReader();
             reader.onload = (e) => {
