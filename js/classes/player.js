@@ -7,7 +7,8 @@ export default class Player {
 		this.#name = localStorage.getItem('playername') ? localStorage.getItem('playername') : prompt('Enter your name');
 		this.#attack = localStorage.getItem('attack') ? parseInt(localStorage.getItem('attack')) : 1;
 		this.#bank = localStorage.getItem('bank') ? parseInt(localStorage.getItem('bank')) : 0;
-		
+		this.updateLocalStorage();
+
 		$('#playername').html(this.#name);
 		$('#dpc').html("Dpc = " + this.#attack);
 		$('#bank-box-text').html(this.#bank + ' $');
@@ -44,10 +45,13 @@ export default class Player {
 
 	}
 
+
 	updateLocalStorage() {
+		console.log('updateLocalStorage');
 		localStorage.setItem('playername', this.#name);
 		localStorage.setItem('attack', this.#attack);
 		localStorage.setItem('bank', this.#bank);
+
 	}
 
 	updateLocalStorageBank(bank) {

@@ -1,24 +1,24 @@
 export default class Save {
     #player;
-    #monster;
 
-	constructor(player, monster) {
+	constructor(player) {
 		this.#player = player;
-        this.#monster = monster;
         
         $('#exportJSON').click(this.exportJson.bind(this));
         $('#importJSON').change(this.importJson.bind(this));
 	}
 
     exportJson() {
+        console.log("dzdzd");
+
         let obj = {
             name          : this.#player.getName(),
             player_attack : this.#player.getAttack(),
             bank          : this.#player.getBank()
         };
         let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-        $('#exportJSON').setAttribute("href", "data:" + data);
-        $('#exportJSON').setAttribute("download", "data.json");
+        $('#exportJSON').attr('href', 'data:' + data);
+        $('#exportJSON').attr('download', 'data.json');
     }
 
     importJson() {

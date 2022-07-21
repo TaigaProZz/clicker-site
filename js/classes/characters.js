@@ -1,5 +1,4 @@
 import Character from './character.js';
-import Player from './player.js';
 
 export default class Characters {
 
@@ -16,15 +15,15 @@ export default class Characters {
 
  
     
-    display() {
+    display(player) {
         $(document).ready(() => {
             let display = 'block';
-            var totalDps = 0;
+            var totalDps = localStorage.getItem('charDps') ? parseInt(localStorage.getItem('charDps')) : 0;
+        
             
             // create a div for each character
             this.#charactersList.forEach((char, index) => {
                 display = char.getVisible() ? 'block' : 'none';
-                char.setTotalDps(totalDps);
                 $('#characters-list').append(
                     '<div class="character-box" style="display:'+ display +'">' +
                         '<div class="character-name unselectable">' +
@@ -40,57 +39,71 @@ export default class Characters {
                             '<img class="character-img" src="' + char.getImage() + '">' +
                         '</div>' +
                         
-                        '<button id="character-buy-btn-'+char.getName()+'" class="character-buy-btn btn btn-primary center">Acheter <br>'+ char.getPrice()+'</button>' + 
-                        '<button id="character-lvl-up-btn-'+char.getName()+'" class="character-lvl-up-btn btn btn-primary" style="display:none">Up</button>' + 
-                
+                        '<button id="character-buy-btn-'+char.getName()+'" class="character-buy-btn center">Acheter <br>'+ char.getPrice()+'</button>' + 
+                        '<button id="character-lvl-up-btn-'+char.getName()+'" class="character-lvl-up-btn" style="display:none">Up</button>' + 
                     '</div>'
                 );
 
-                // if the character is bought, hide the buy button and show the lvl up button
-                if (char.getBought() == true) {
-                    $('#character-buy-btn-' + char.getName()).css("visibility", "hidden");
-                    $('#character-lvl-up-btn-' + char.getName()).css("display", "block");
-                    console.log(char.getAttack())
-                    totalDps = totalDps + char.getAttack(); 
-                    char.setTotalDps(totalDps);
+                lvlUp(char, totalDps);
+                buy(char, player, totalDps);
+              
 
-                    console.log(totalDps)
-
-
-
-                }
-
-                // if the character is not bought, hide the lvl up button and show the buy button
-                $('#character-buy-btn-' + char.getName()).click(() => {
-                    var playerBank = player.getBank();
-                    console.log(player);
-
-                    if (playerBank >= char.getPrice()) {
-                        playerBank = playerBank - char.getPrice();
-                        player.setBank(playerBank);
-                        // console.log(player.getBank(), playerBank);
-
-                        char.setBought(true);   
-                        totalDps = totalDps + char.getAttack(); 
-                        char.setTotalDps(totalDps);
-
-                        player.updateLocalStorageBank(playerBank);
-                        $('#character-buy-btn-' + char.getName()).css("visibility", "hidden");
-                        $('#character-lvl-up-btn-' + char.getName()).css("display", "block");
-                        // console.log('You bought ' + char.getName() + 'bought = ' + char.getBought() + playerBank + ' ' + player.getBank());
-                    } else {
-                        // console.log(playerBank + ' ' + char.getPrice());
-
-                    }
-                        
-                    
-                });
             })
         });
+        
+        
+        function lvlUp(char, totalDps)  {
+            // if the character is bought, hide the buy button and show the lvl up button
+            if (char.getBought() == true) {
+                $('#character-buy-btn-' + char.getName()).css("visibility", "hidden");
+                $('#character-lvl-up-btn-' + char.getName()).css("display", "block");
+                console.log(char.getAttack())
+                totalDps = totalDps + char.getAttack(); 
+                char.setTotalDps(totalDps);
+                localStorage.setItem('charDps', char.getTotalDps());
+                
+                
+            }
+     
+        }
+  
+        function buy(char, player, totalDps) {
+           // if the character is not bought, hide the lvl up button and show the buy button
+           $('#character-buy-btn-' + char.getName()).click(() => {
+            var playerBank = player.getBank();
+            if (playerBank >= char.getPrice()) {
+                playerBank = playerBank - char.getPrice();
+                player.setBank(playerBank);
+            
+                char.setBought(true);   
+                totalDps = totalDps + char.getAttack(); 
+                char.setTotalDps(totalDps);
+            
+                player.updateLocalStorageBank(playerBank);
+                parseInt(localStorage.setItem('charDps', char.getTotalDps()));
+
+                $('#character-buy-btn-' + char.getName()).css("visibility", "hidden");
+                $('#character-lvl-up-btn-' + char.getName()).css("display", "block");
+            } else {
+                 $('#liveToast').toast('show'); 
+                }  
+            });
+        }
 
         
 
     }
+    
+    attackMonsterWithDps (monster, character) {
+        
+        var monsterHealth = monster.getHealth();
+        var characterDps = character.getTotalDps();
 
-   
+
+            
+
+    }
+    
+                
+
 }

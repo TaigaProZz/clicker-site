@@ -7,7 +7,7 @@ export default class Character {
 	#image = '';
 	#visible = '';
 	#bought = false;
-	#totalDps = 1;
+	#totalDps = 3;
 
 	constructor(name, attack, level, price, priceLevelUp, image, visible, bought, totalDps) {
 		this.#name = name;
@@ -51,7 +51,6 @@ export default class Character {
 	}
 
 	getTotalDps() {
-		$('#dps').html('dps= ' + totalDps);
 		return this.#totalDps;
 
 	}
@@ -72,11 +71,18 @@ export default class Character {
 	}
 
 	setTotalDps(totalDps) {
-
 		this.#totalDps = totalDps;
 		$('#dps').html('dps= ' + totalDps);
 
 	}
+
+
+	// updateLocalStorageCharacter() {
+	// 	localStorage.setItem('playername', this.#name);
+	// 	localStorage.setItem('attack', this.#attack);
+	// 	localStorage.setItem('bank', this.#bank);
+	// }
+
 
 
 }
