@@ -3,9 +3,8 @@ export default class Save {
 
 	constructor(player) {
 		this.#player = player;
-        
-        $('#exportJSON').click(this.exportJson.bind(this));
-        $('#importJSON').change(this.importJson.bind(this));
+        $('#exportJson').click(this.exportJson.bind(this));
+        $('#importJson').change(this.importJson.bind(this));
 	}
 
     exportJson() {
@@ -17,12 +16,15 @@ export default class Save {
             bank          : this.#player.getBank()
         };
         let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-        $('#exportJSON').attr('href', 'data:' + data);
-        $('#exportJSON').attr('download', 'data.json');
+        $('#exportJson').attr('href', 'data:' + data);
+        $('#exportJson').attr('download', 'data.json');
     }
 
+
+
+
     importJson() {
-        var file = $('#importJSON').files[0];
+        var file = $('#importJson').files[0];
         if (file) { 
             var reader = new FileReader();
             reader.onload = (e) => {

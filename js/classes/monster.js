@@ -8,10 +8,8 @@ export default class Monster {
         this.#initialHealth = health;
 		this.#health = health;
 		this.#name = name;
-        
         this.displayHealth();
 	}
-
 
 	getName() {
 		return this.#name
@@ -26,16 +24,19 @@ export default class Monster {
 		return this.#health
 	}
 
+    // Display the health bar and set color bar by pourcentage
     displayHealth() {
-        $('#monsterHealth').html(this.#health + ' / '  + this.#initialHealth + ' hp');
+        $('#monsterHealth').html(this.#health + ' / ' + this.#initialHealth + ' hp');
         this.changeBarColorByHealthPourcentage(this.#health);
     }
 
+    // ftn to reset the health of the monster
     resetHealth() {
 		this.#health = this.#initialHealth;
         this.displayHealth();
 	}
 
+    // Change the color of the health bar by pourcentage
     changeBarColorByHealthPourcentage(health) {
         var barcolor = $('#bosshealth-bar')
         var healthpourcentage = health / this.#initialHealth * 100

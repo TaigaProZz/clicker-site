@@ -171,9 +171,6 @@ body{
 
 }
 
-
-
-
 .monster-display-line {
     width: 100%;
     height: 100%;
@@ -187,12 +184,10 @@ body{
     background-position: center;
     background-repeat: no-repeat;
 
-
 }
 
 
-
-.characters-box {
+.all-pokemons-box {
     width: 25%;
     height: 80%;
     margin-top: 10%;
@@ -204,14 +199,15 @@ body{
     overflow-x: hidden;
 }
 
-.characters-container {
+.pokemon-container {
     width: 100%;
     height: 100%;
     border-color: black;
 }
 
 
-.character-box {
+.pokemon-box,
+.click-box {
     width: 97%;
     height: 18%;
     position : relative;
@@ -223,7 +219,8 @@ body{
     border-color: black;
 }
 
-.character-name {
+.pokemon-name,
+.click-name {
     width: 92%;
     text-align: center;
     position : absolute;
@@ -236,7 +233,8 @@ body{
 }
 
 
-.character-attack {
+.pokemon-attack,
+.click-attack {
     width: 92%;
     font-size: 1em;
     text-align: center;
@@ -246,7 +244,8 @@ body{
     margin-top: 10%;
 }
 
-.character-level {
+.pokemon-level,
+.click-level {
     width: 92%;
     font-size: 1em;
     text-align: center;
@@ -257,8 +256,8 @@ body{
 }
 
 
-
-.character-img-parent {
+.pokemon-img-parent,
+.click-img-parent {
     width: 25%;
     height: 90%;
     position : absolute;
@@ -266,17 +265,14 @@ body{
 
 }
 
-
-
-
-.character-img {
+.pokemon-img,
+.click-img {
     width : 100%;
     height : 100%;
-
 }
 
-
-.character-buy-btn {
+.pokemon-buy-btn,
+.click-buy-btn {
     width: 25%;
     height: 70%;
     right: 2%;
@@ -292,11 +288,11 @@ body{
     text-decoration-line: underline;
     text-decoration-color: antiquewhite;
     cursor: pointer;
-
 }
 
 
-.character-lvl-up-btn {
+.pokemon-lvl-up-btn,
+.click-lvl-up-btn {
     width: 25%;
     height: 70%;
     right: 2%;

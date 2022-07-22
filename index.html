@@ -13,41 +13,31 @@
 
 
 <div class="main center">
-
-
    <div class="main-window" >
-
         <div class="topline unselectable">
-            
-            
-
         </div>
 
         <div class="mid-container">
             <div class="clickbox">
-
                 <div class="player-name center">
                     <span id="playername" class="unselectable"></span> 
                 </div>
-
                 <div class = "bank-box center unselectable">
                     <span id="bank-box-text"></span>
                 </div>
-
-                <div class="damage-container center unselectable">
-                   
+                <div class="damage-container center unselectable"> 
                     <div class = "damagebox-square">
-
-                        <div class="dps-box center">
+                        <div id="popHoverDps" class="dps-box center" tabindex="0" data-bs-placement="top" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                         data-bs-content="Dégats par secondes des pokemons possédés">
                             <span id="dps"></span>
                         </div>
-                        <div class="dpclick-box center">
-                            <span id="dpc"></span>
+
+                        <div id="popHoverDpc" class="dpclick-box center" tabindex="0" data-bs-placement="top" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                         data-bs-content="Dégats par clicks des pokemons possédés">
+                            <span id="dpc" type="disabled"></span>
                         </div>                        
                     </div>
-
                 </div>
-
                 <div id="monster-box" class="monster-box unselectable" >
                     <div class="bosshealth-container center">
 
@@ -56,40 +46,35 @@
                                 <div id="bosshealth-bar" class="bosshealth-bar center">
                                 </div> 
                                 <span id="monsterHealth" class="bosshealth-bar monsterHealth center"></span> 
-                            </div>
-                            
+                            </div>             
                         </div> 
-                         
-                         
                     </div>
 
                     <div class="monster-display-line center" id="monsterOnClick">   
                         <div class="monster-display center">
                         </div>
-                    </div>
-                    
+                    </div>              
                 </div>
-
             </div>
            
-            <div class="characters-box center">
-                <div class="characters-container" id="characters-list">
-                    <div class="character-box">
-                        <div class="character-name unselectable">
-                            <span class="charactername">Click</span>
+            <div class="all-pokemons-box center">
+                <div class="pokemon-container" id="pokemons-list">
+                    <div class="click-box">
+                        <div class="click-name unselectable">
+                            <span class="pokemonname">Click</span>
                         </div>
-                        <div class="character-attack unselectable">
-                            <span id="character-attack-click" >Attaque: </span> 
+                        <div class="click-attack unselectable">
+                            <span id="click-attack" ></span> 
                         </div>
-                        <div class="character-level unselectable">
-                        <span id="character-level-click">Niveau </span>
-                    </div>
-                        <div class="character-img-parent unselectable">
-                            <img class="character-img" src="./img/click.png"> 
+                        <div class="click-level unselectable">
+                            <span id="click-level-click"></span>
                         </div>
-                        
-                        <button id="character-buy-btn-" class="character-buy-btn center unselectable">Ameliorer</button>
-                        <button id="character-lvl-up-btn-" class="character-lvl-up-btn unselectable" style="display:none">Ameliorer</button> 
+                        <div class="click-img-parent unselectable">
+                            <img class="click-img" src="./img/click.png"> 
+                        </div>
+                    
+                        <button id="click-buy-btn-" class="click-buy-btn center unselectable">Ameliorer</button>
+                        <button id="click-lvl-up-btn-" class="click-lvl-up-btn unselectable" style="display:none">Ameliorer</button> 
                 
                     </div>
                 </div>
@@ -98,30 +83,21 @@
         </div>
 
         <div class="botline center unselectable">
-            <button id="exportJSON"><i class="icon-download btn"></i>export json</button>
-            <input type="file" id="importJSON">
-
-
+            <button id="exportJson"><i class="icon-download btn"></i>export json</button>
+            <input type="file" id="importJson">
 
             <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
                 <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-                  <div class="toast-header">
-                    <img src="./img/krabby.png" class="img-toast rounded me-2" >
-                    <strong class="me-auto">Refusé</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                  </div>
-                  <div class="toast-body">
-                    Tu n'as pas assez d'argent !
-                  </div>
+                    <div class="toast-header">
+                        <img src="./img/krabby.png" class="img-toast rounded me-2" >
+                        <strong class="me-auto">Refusé</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">Tu n'as pas assez d'argent !</div>
                 </div>
-            </div>
-        
-
-
-           
+            </div>           
         </div>
-                
-
+        
     </div>
 </div>
 
@@ -129,9 +105,6 @@
     <script type="module" src="js/main.js"></script>
     <script type="text/javascript" src="js/services/ripple.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
-
 
 </body>
 </html>

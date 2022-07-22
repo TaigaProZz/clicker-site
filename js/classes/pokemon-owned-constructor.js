@@ -1,4 +1,4 @@
-export default class Character {
+export default class PokemonOwnedClass {
     #name = '';
     #attack = 2;
     #level = 1;
@@ -7,7 +7,7 @@ export default class Character {
 	#image = '';
 	#visible = '';
 	#bought = false;
-	#totalDps = 3;
+	#totalDps = 0;
 
 	constructor(name, attack, level, price, priceLevelUp, image, visible, bought, totalDps) {
 		this.#name = name;
@@ -18,8 +18,10 @@ export default class Character {
 		this.#image = image;
 		this.#visible = visible;
 		this.#bought = bought;
-		this.#totalDps = totalDps;
+		this.#totalDps = localStorage.getItem('pokemonOwnedDps') ? parseInt(localStorage.getItem('pokemonOwnedDps')) : 0;
 
+
+		$('#dps').html(this.#totalDps + ' dps');
 	
 		
 	}
@@ -72,12 +74,12 @@ export default class Character {
 
 	setTotalDps(totalDps) {
 		this.#totalDps = totalDps;
-		$('#dps').html('dps= ' + totalDps);
+		$('#dps').html(totalDps + ' dps');
 
 	}
 
 
-	// updateLocalStorageCharacter() {
+	// updateLocalStoragePokemon() {
 	// 	localStorage.setItem('playername', this.#name);
 	// 	localStorage.setItem('attack', this.#attack);
 	// 	localStorage.setItem('bank', this.#bank);
