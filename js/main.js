@@ -14,8 +14,8 @@ var monster = new Monster(20, 'Psykokwak');
 var pokemonOwned = new PokemonOwned();
 pokemonOwned.display(player);
 
-// Pokemon 
-var pokemon = new PokemonOwnedClass();
+
+
 
 // Click on monster event
 $('#monsterOnClick').click(() => {
@@ -36,9 +36,36 @@ $('#monsterOnClick').click(() => {
 
 // every second, attack the monster with pokemons dps and check if monster is dead
 setInterval(() => {	
+	var pokemon = new PokemonOwnedClass();	
 	pokemonOwned.attackMonsterWithDps(monster, pokemon)
 	checkIfMonsterIsDead(player, monster)
 }, 1000);
+
+$('#click-lvl-up-btn').click(() => {
+	
+	var playerBank = player.getBank();
+	if (playerBank >= 1) {
+		var playerAttack = player.getAttack();
+		var clickLvl = player.getClickLvl();
+		
+		playerAttack = playerAttack + 1;
+		clickLvl = clickLvl + 1;	
+		playerBank = playerBank - 1;
+		
+		player.setAttack(playerAttack);
+		player.setBank(playerBank);
+		player.setClickLvl(clickLvl);
+		
+		player.updateLocalStorage()
+		$('#dpc').text(playerAttack + ' dégats par clicks');
+		$('#click-attack').text('Attaque ' + playerAttack).css('color', '#00ff00');
+		$('#click-lvl').text('Niveau click ' + clickLvl);
+		$('#bank-box-text').text(playerBank  + ' $');
+	}
+
+});
+
+
 
 function checkIfMonsterIsDead(player, monster) {
 	var monsterHealth = monster.getHealth();
@@ -49,6 +76,9 @@ function checkIfMonsterIsDead(player, monster) {
 		player.setBank(playerBank);
 	}
 }
+
+
+
 	
 // pophover dps 
 $('#popHoverDps').hover(() => {

@@ -4,16 +4,29 @@ export default class PokemonOwned {
 
     #pokemonsList = [];
 
+
     constructor() {
-        this.#pokemonsList = [
+        this.#pokemonsList =[
             new PokemonOwnedClass('Grukui', 5, 1, 10, [0, 10, 20, 30], '../img/grukui.png', true,  false),
             new PokemonOwnedClass('Krabby', 15, 1, 100, [0, 10, 20, 30], '../img/krabby.png', true,  false),
             new PokemonOwnedClass('Machoc', 40, 1, 500, [0, 10, 20, 30], '../img/machoc.png', true,  false),
             new PokemonOwnedClass('Ponyta', 100, 1, 1000, [0, 10, 20, 30], '../img/ponyta.png', true,  false),
+            new PokemonOwnedClass('Pikachu', 200, 1, 2000, [0, 10, 20, 30], '../img/pikachu.png', true,  false)
+            
         ]
+
+        this.savePokemons();
     }
 
-    
+    savePokemons() {
+      
+     //   this.#pokemonsList.forEach((pokemon, index) => {
+     //      localStorage.setItem("pokemonOwned", JSON.stringify(pokemon));
+     //  });
+     //  
+
+     }
+
     display(player) {
         $(document).ready(() => {
             let display = 'block';
@@ -42,7 +55,8 @@ export default class PokemonOwned {
                     '</div>'
                 );
                 lvlUp(pokemon, totalDps);
-                buy(pokemon, player, totalDps);              
+                buy(pokemon, player, totalDps);  
+
             })
         });
         
@@ -72,26 +86,33 @@ export default class PokemonOwned {
                     pokemon.setBought(true);   
                     totalDps = totalDps + pokemon.getAttack(); 
                     pokemon.setTotalDps(totalDps);
-                
+                    
                     player.updateLocalStorageBank(playerBank);
-                    parseInt(localStorage.setItem('pokemonOwnedDps', pokemon.getTotalDps()));
+                    parseInt(localStorage.setItem('pokemonOwnedDps', pokemon.getTotalDps())); 
 
+
+                    console.log(pokemon.getTotalDps());
                     $('#pokemon-buy-btn-' + pokemon.getName()).css("visibility", "hidden");
                     $('#pokemon-lvl-up-btn-' + pokemon.getName()).css("display", "block");
                 } else {
                     // if player doesn't have enough money, display a message
-                     $('#liveToast').toast('show'); 
+                    $('#liveToast').toast('show'); 
                     }  
-            });
+            });            
         } 
     }
-    
-    // attack the monster with pokemon's attack dps
-    attackMonsterWithDps (monster, pokemon) {   
-        var monsterHealth = monster.getHealth();
-        var pokemonDps = pokemon.getTotalDps();
-        monsterHealth = monsterHealth - pokemonDps;
-        monster.setHealth(monsterHealth);     
-    }           
+
+        // attack the monster with pokemon's attack dps
+        attackMonsterWithDps (monster, pokemon) { 
+            var monsterHealth = monster.getHealth();
+            var pokemonDps = pokemon.getTotalDps();
+            monsterHealth = monsterHealth - pokemonDps;
+            monster.setHealth(monsterHealth);
+
+        }  
+
+
+       
+            
 
 }

@@ -79,11 +79,10 @@ export default class PokemonOwnedClass {
 	}
 
 
-	// updateLocalStoragePokemon() {
-	// 	localStorage.setItem('playername', this.#name);
-	// 	localStorage.setItem('attack', this.#attack);
-	// 	localStorage.setItem('bank', this.#bank);
-	// }
+	updateLocalStoragePokemon() {
+		localStorage.setItem('isBought', this.#bought);
+		
+	}
 
 
 

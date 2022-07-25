@@ -1,6 +1,6 @@
 export default class Player {
 	#name = '';
-	#attack = 0;
+	#attack = 1;
 	#clickLvl = 1;
 	#bank = 0;
 
@@ -10,13 +10,14 @@ export default class Player {
 		this.#bank = localStorage.getItem('bank') ? parseInt(localStorage.getItem('bank')) : 0;
 		this.#clickLvl = localStorage.getItem('clickLvl') ? parseInt(localStorage.getItem('clickLvl')) : 1;
 		this.updateLocalStorage();
+	
+
 
 		$('#playername').html(this.#name);
-		$('#dpc').html(this.#attack + ' dpc');
-		$('#pokemon-attack-click').html('Attaque par click '+ this.#attack).css('color', '#00ff00');
+		$('#dpc').html(this.#attack + ' dégats par clicks');
 		$('#bank-box-text').html(this.#bank + ' $');
-		//TODO clicklvl
-		$('')
+		$('#click-attack').html('Attaque ' + this.#attack).css('color', '#00ff00');
+		$('#click-lvl').html('Niveau click ' + this.#clickLvl);
 	}
 
 	getName() {
@@ -31,6 +32,10 @@ export default class Player {
 		return this.#bank ;
 	}
 
+	getClickLvl() {
+		return this.#clickLvl;
+	}
+
 	setName(name) {
 		this.#name = name;
 		$('#playername').html(name);
@@ -39,13 +44,19 @@ export default class Player {
 
 	setAttack(attack) {
 		this.#attack = attack;
-		$('#dpc').html("Dpc = " + attack);
+		$('#dpc').html(attack + ' dégats par clicks');
+		this.updateLocalStorage();
+	}
+
+	setClickLvl(clickLvl) {
+		this.#clickLvl = clickLvl;
+		$('#click-lvl').html('Niveau click ' + clickLvl);
 		this.updateLocalStorage();
 	}
 	
 	setBank(bank) {
 		this.#bank = bank;
-		this.updateLocalStorageBank(bank);
+		this.updateLocalStorage();
 		$('#bank-box-text').html(this.#bank + ' $');
 
 	}
@@ -57,7 +68,9 @@ export default class Player {
 		localStorage.setItem('bank', this.#bank);
 	}
 
-	updateLocalStorageBank(bank) {
-		localStorage.setItem('bank', bank);
+	updradeClickLevel(player) {
+		
 	}
+
 }
+
