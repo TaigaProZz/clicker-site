@@ -16,14 +16,13 @@ export default class PokemonOwned {
         ]
 
         this.savePokemons();
-    }
+        console.log(this.#pokemonsList);
 
+    }
     savePokemons() {
-      
-     //   this.#pokemonsList.forEach((pokemon, index) => {
-     //      localStorage.setItem("pokemonOwned", JSON.stringify(pokemon));
-     //  });
-     //  
+         
+        //localStorage.setItem("pokemonOwned", JSON.stringify(pokemonsList));
+       
 
      }
 
@@ -50,7 +49,9 @@ export default class PokemonOwned {
                             '<img class="pokemon-img" src="' + pokemon.getImage() + '">' +
                         '</div>' +
                         
-                        '<button id="pokemon-buy-btn-'+pokemon.getName()+'" class="pokemon-buy-btn center">Acheter <br>'+ pokemon.getPrice()+'</button>' + 
+                        '<button id="pokemon-buy-btn-'+pokemon.getName()+'"class="pokemon-buy-btn">'+ pokemon.getPrice()+'' +
+                        '<img class="coin-price-img" src="./img/coin.png">' +
+                        '</button>' + 
                         '<button id="pokemon-lvl-up-btn-'+pokemon.getName()+'" class="pokemon-lvl-up-btn" style="display:none">Up</button>' + 
                     '</div>'
                 );
@@ -73,7 +74,6 @@ export default class PokemonOwned {
             }
         }
   
-        // buy the pokemon if the player has enough money
         function buy(pokemon, player, totalDps) {
            // if the pokemon is not bought, hide the lvl up button and show the buy button
            $('#pokemon-buy-btn-' + pokemon.getName()).click(() => {
@@ -102,12 +102,12 @@ export default class PokemonOwned {
         } 
     }
 
-        // attack the monster with pokemon's attack dps
-        attackMonsterWithDps (monster, pokemon) { 
-            var monsterHealth = monster.getHealth();
+        // attack the wildPokemon with pokemon's attack dps
+        attackWildPokemonWithDps (wildPokemon, pokemon) { 
+            var wildPokemonHealth = wildPokemon.getHealth();
             var pokemonDps = pokemon.getTotalDps();
-            monsterHealth = monsterHealth - pokemonDps;
-            monster.setHealth(monsterHealth);
+            wildPokemonHealth = wildPokemonHealth - pokemonDps;
+            wildPokemon.setHealth(wildPokemonHealth);
 
         }  
 

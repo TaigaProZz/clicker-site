@@ -3,40 +3,45 @@ export default class Save {
 
 	constructor(player) {
 		this.#player = player;
-        $('#exportJson').click(this.exportJson.bind(this));
-        $('#importJson').change(this.importJson.bind(this));
+
 	}
 
-    exportJson() {
-        console.log("dzdzd");
+   
 
+    exportJson(){
         let obj = {
             name          : this.#player.getName(),
             player_attack : this.#player.getAttack(),
             bank          : this.#player.getBank()
         };
-        let data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
-        $('#exportJson').attr('href', 'data:' + data);
-        $('#exportJson').attr('download', 'data.json');
+    
+        var json = JSON.stringify(obj);
+        var blob = new Blob([json], {type: "application/json"});
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = "save.json";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+            
     }
 
 
-
-
-    importJson() {
-        var file = $('#importJson').files[0];
-        if (file) { 
-            var reader = new FileReader();
-            reader.onload = (e) => {
-                var contents = e.target.result;
-                var json = JSON.parse(contents);
-                this.#player.setName(json.name);
-                this.#player.setAttack(json.player_attack);
-                this.#player.setBank(json.bank);
-            }
-            reader.readAsText(file);
-        } else {
-            alert("Failed to load file");
+    importJson(e){
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var json = e.target.result;
+            var obj = JSON.parse(json);
+            this.#player.setName(obj.name);
+            this.#player.setAttack(obj.player_attack);
+            this.#player.setBank(obj.bank);
+            this.#player.updateLocalStorage();
+           
         }
+        reader.readAsText(file);
     }
+
 }
+

@@ -1,4 +1,4 @@
-export default class Monster {
+export default class WildPokemon {
 
     #initialHealth = 0;
     #health = 0;
@@ -26,7 +26,7 @@ export default class Monster {
 
     // Display the health bar and set color bar by pourcentage
     displayHealth() {
-        $('#monsterHealth').html(this.#health + ' / ' + this.#initialHealth + ' hp');
+        $('#wildPokemonHealth').html(this.#health + ' / ' + this.#initialHealth + ' hp');
         this.changeBarColorByHealthPourcentage(this.#health);
     }
 
@@ -38,7 +38,7 @@ export default class Monster {
 
     // Change the color of the health bar by pourcentage
     changeBarColorByHealthPourcentage(health) {
-        var barcolor = $('#bosshealth-bar')
+        var barcolor = $('#wildPokemonHealth-bar')
         var healthpourcentage = health / this.#initialHealth * 100
         barcolor.css("width", healthpourcentage + '%');
     

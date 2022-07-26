@@ -32,6 +32,8 @@ body{
     width: 100%;
     height: 13%;
     position: relative;
+    display : inline-block;
+
    
 }
 
@@ -39,7 +41,7 @@ body{
     width: 100%;
     height: 80%;
     position: relative;
-    
+
 }
 
 
@@ -108,8 +110,8 @@ body{
     width: 40%;
     height: 100%;
     float: left;
-    color: white;
-    background: rgb(0, 0, 0);
+    color: black;
+    background: rgb(255, 255, 255);
     border: solid 4px;
     border-color: rgb(218, 63, 166);
 
@@ -119,10 +121,15 @@ body{
     width: 40%;
     height: 100%;
     float: right;
-    color: white;
-    background: rgb(0, 0, 0);
+    color: black;
+    background: rgb(240, 240, 240);
     border: solid 4px;
     border-color: rgb(218, 63, 166);
+}
+
+.dpc-img {
+    width: 11%;
+    height: 100%;
 }
 
 
@@ -135,7 +142,7 @@ body{
 }
 
 
-.monster-box {
+.wildPokemon-box {
     width: 60%;
     height: 70%;
     float: left;
@@ -149,13 +156,13 @@ body{
    
 }
 
-.bosshealth-line {
+.wildPokemonHealth-line {
     width:100%;
     height: 10%;
 
 }
 
-.bosshealth-container {
+.wildPokemonHealth-container {
     width: 100%;
     height: 100%;
     position: relative;
@@ -164,7 +171,7 @@ body{
     border-color: black;
 }
 
-.bosshealth-box {
+.wildPokemonHealth-box {
     width: 45%;
     height: 50%;
     background: white;
@@ -172,26 +179,26 @@ body{
     border-color: black;
 }
 
-.bosshealth-bar {
+.wildPokemonHealth-bar {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.monsterHealth {
+.wildPokemonHealth-text {
     color: black;
     font-size: 1em;
     font-weight: bold;
     z-index: 1;
 }
 
-.monster-display-line {
+.wildPokemon-display-line {
     width: 100%;
     height: 100%;
     
 }
 
-.monster-display {
+.wildPokemon-display {
     width: 50%;
     height: 40%;
     background-image: url('../img/psykokwak.png');
@@ -203,33 +210,11 @@ body{
     animation-iteration-count: 1; 
 }
 
-.monster-display.shake {
+.wildPokemon-display.shake {
     animation: shake 0.3s;
     /* When the animation is finished, start again */
     animation-iteration-count: infinite;
 }
-
-/* .monster-display:hover {
-   /* Start the vibrate animation with duration 0.5 seconds */
-  /* animation: shake 0.5s; */
-
-  /* When the animation is finished, start again */
-  /* animation-iteration-count: infinite; */
-/* } */ 
-
-@keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
 
 
 .all-pokemons-box {
@@ -328,13 +313,13 @@ body{
     right: 2%;
     bottom: 10px;
     position: absolute;
+    display : inline-block;
     background-color: #202124;
     border: solid 1px;
     border-color: black;
     color: white;
     font-size: 0.9vw;
     font-weight: bold;
-    text-align: center;
     cursor: pointer;
 }
 
@@ -357,6 +342,16 @@ body{
     cursor: pointer;
 
 }
+
+.coin-price-img {
+    width: auto;
+    height: 70%;
+    right: 1%;
+    bottom: 1%;
+    display : inline-block;
+}
+
+
 
 .img-toast {
     width: 10%;
@@ -393,6 +388,22 @@ body{
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+/* SHAKE animation */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
 
 
 element.style {

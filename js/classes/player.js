@@ -2,6 +2,7 @@ export default class Player {
 	#name = '';
 	#attack = 1;
 	#clickLvl = 1;
+	#priceLevelUp = [1, 10, 20, 30];
 	#bank = 0;
 
 	constructor() {
@@ -9,14 +10,14 @@ export default class Player {
 		this.#attack = localStorage.getItem('attack') ? parseInt(localStorage.getItem('attack')) : 1;
 		this.#bank = localStorage.getItem('bank') ? parseInt(localStorage.getItem('bank')) : 0;
 		this.#clickLvl = localStorage.getItem('clickLvl') ? parseInt(localStorage.getItem('clickLvl')) : 1;
+		this.#priceLevelUp = [1, 10, 20, 30];
 		this.updateLocalStorage();
 		this.updateLocalStorageBank();
 
-	
 
 
 		$('#playername').html(this.#name);
-		$('#dpc').html(this.#attack + ' dégats par clicks');
+		$('#dpc').html(this.#attack + ' dp/click');
 		$('#bank-box-text').html(this.#bank);
 		$('#click-attack').html('Attaque ' + this.#attack).css('color', '#00ff00');
 		$('#click-lvl').html('Niveau click ' + this.#clickLvl);
@@ -68,6 +69,7 @@ export default class Player {
 		localStorage.setItem('playername', this.#name);
 		localStorage.setItem('attack', this.#attack);
 		localStorage.setItem('bank', this.#bank);
+		localStorage.setItem('clickLvl', this.#clickLvl);
 	}
 
 	updateLocalStorageBank() {
