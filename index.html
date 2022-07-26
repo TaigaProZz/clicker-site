@@ -14,24 +14,30 @@
 
 <div class="main center">
    <div class="main-window" >
-        <div class="topline center unselectable">
-             <div class="damage-container center unselectable"> 
-                    <div class = "damagebox-square">
-                        <div id="popHoverDps" class="dps-box center" tabindex="0" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="hover focus"
+        <div class="topline unselectable">
+            <div class="bank-box unselectable">
+                <span class="center" id="bank-box-text"></span>
+                <img class="coinbank-img" src="/img/coin.png"></img>
+            </div>
+            <div class="damage-container  unselectable"> 
+                <div class = "damagebox-square">
+                    <div id="popHoverDps" class="dps-box center" tabindex="0" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="hover focus"
                          data-bs-content="Dégats par secondes des pokemons possédés">
-                            <span id="dps"></span>
-                        </div>
-
-                        <div id="popHoverDpc" class="dpclick-box center" tabindex="0" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="hover focus"
-                         data-bs-content="Dégats par clicks des pokemons possédés">
-                            <span id="dpc"></span>
-                        </div>                        
+                        <span id="dps"></span>
                     </div>
-                </div>
 
+                    <div id="popHoverDpc" class="dpclick-box center" tabindex="0" data-bs-placement="bottom" data-bs-toggle="popover" data-bs-trigger="hover focus"
+                         data-bs-content="Dégats par clicks des pokemons possédés">
+                        <span id="dpc"></span>
+                    </div>                        
+                </div>
+                
+            </div>
+           
+           
                
         </div>
-
+       
         <div class="mid-container">   
                 <div id="monster-box" class="monster-box center unselectable" >
                     <div class="bosshealth-line center">
@@ -51,9 +57,7 @@
            
           
             <div class="all-pokemons-box center">
-                <div class = "bank-box center unselectable">
-                    <span id="bank-box-text"></span>
-                </div>
+                
                 <div class="pokemon-container" id="pokemons-list">
                     <div class="click-box">
                         <div class="click-name unselectable">
@@ -69,7 +73,7 @@
                             <img class="click-img" src="./img/click.png"> 
                         </div>
                     
-                        <button id="click-lvl-up-btn" class="click-lvl-up-btn unselectable">Ameliorer</button> 
+                        <button id="click-lvl-up-btn" class="click-lvl-up-btn center unselectable">Ameliorer</button> 
                 
                     </div>
                 </div>

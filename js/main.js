@@ -14,13 +14,28 @@ var monster = new Monster(20, 'Psykokwak');
 var pokemonOwned = new PokemonOwned();
 pokemonOwned.display(player);
 
+// shake the wild pokemon when the player click on it
+$(function() {
+    $('.monster-box').click(function(ev){
+
+		$('.monster-display').addClass('shake'); 
+		setTimeout(function(){
+ 
+		$('div').removeClass('shake'); 
+		},50);
+		 ev.preventDefault();
+	 });
+ });
 
 
-
+	
 // Click on monster event
-$('#monsterOnClick').click(() => {
+$('#monsterOnClick').click((ev) => {
 	let monsterHealth = monster.getHealth();
 	let playerAttack = player.getAttack();
+
+ 
+
 
 	if (monsterHealth > playerAttack) {
 		monsterHealth = monsterHealth - playerAttack;
@@ -32,6 +47,10 @@ $('#monsterOnClick').click(() => {
 		playerBank = playerBank + 1;
 		player.setBank(playerBank);
 	}
+});
+
+$('#monsterOnClick').ready(function() {
+   
 });
 
 // every second, attack the monster with pokemons dps and check if monster is dead
@@ -60,7 +79,7 @@ $('#click-lvl-up-btn').click(() => {
 		$('#dpc').text(playerAttack + ' dégats par clicks');
 		$('#click-attack').text('Attaque ' + playerAttack).css('color', '#00ff00');
 		$('#click-lvl').text('Niveau click ' + clickLvl);
-		$('#bank-box-text').text(playerBank  + ' $');
+		$('#bank-box-text').text(playerBank);
 	}
 
 });
@@ -92,3 +111,10 @@ $('#popHoverDpc').hover(() => {
 
 // Save json
 var save = new Save(player);
+
+
+
+$("#monster-display")
+.on("click", function(){
+
+})
