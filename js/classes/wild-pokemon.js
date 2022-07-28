@@ -1,14 +1,17 @@
 export default class WildPokemon {
-
+   
+    #name = '';
     #initialHealth = 0;
     #health = 0;
-    #name = '';
+    #pokemonImg = '';
+   
 
-	constructor(health, name) {
+	constructor(name, health, pokemonImg) {
+        this.#name = name;
         this.#initialHealth = health;
 		this.#health = health;
-		this.#name = name;
-        this.displayHealth();
+        this.#pokemonImg = pokemonImg;
+        this.refreshInfos();
 	}
 
 	getName() {
@@ -17,23 +20,30 @@ export default class WildPokemon {
 
 	setHealth(hp) {
 		this.#health = hp;
-        this.displayHealth();
+        this.refreshInfos();
 	}
 
 	getHealth() {
 		return this.#health
 	}
 
+
     // Display the health bar and set color bar by pourcentage
-    displayHealth() {
+    refreshInfos() {
         $('#wildPokemonHealth').html(this.#health + ' / ' + this.#initialHealth + ' hp');
+            // Display the image of the monster
+
+        $('#wildPokemonImg').attr('src', this.#pokemonImg);
+        $('#wildPokemonName').html(this.#name);
         this.changeBarColorByHealthPourcentage(this.#health);
     }
+
+  
 
     // ftn to reset the health of the monster
     resetHealth() {
 		this.#health = this.#initialHealth;
-        this.displayHealth();
+        this.refreshInfos();
 	}
 
     // Change the color of the health bar by pourcentage

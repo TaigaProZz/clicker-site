@@ -2,10 +2,10 @@
 $(function() {
     $('.wildPokemon-box').click(function(ev){
 
-		$('.wildPokemon-display').addClass('shake'); 
+		$('#wildPokemonImg').addClass('shake'); 
 		setTimeout(function(){
  
-		$('div').removeClass('shake'); 
+		$('img').removeClass('shake'); 
 		},50);
 		 ev.preventDefault();
 	 });

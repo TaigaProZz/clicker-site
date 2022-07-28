@@ -3,12 +3,17 @@ import PokemonOwned from './classes/pokemon-owned-propreties.js';
 import PokemonOwnedClass from './classes/pokemon-owned-constructor.js';
 import Save from './classes/save.js';
 import WildPokemon from './classes/wild-pokemon.js';
+import WildPokemonList from './classes/wild-pokemon-list.js';
 
 // Create the player
 var player = new Player();
 
 // Create the wildPokemon
-var wildPokemon = new WildPokemon(20, 'Psykokwak');
+var wildPokemonList = new WildPokemonList();
+var wildPokemon = wildPokemonList.getWildPokemonList()[0];
+var randomWildPokemon = Math.floor(Math.random() * wildPokemonList.getWildPokemonList().length);
+
+var wildPokemon = wildPokemonList.getWildPokemonList()[randomWildPokemon];
 
 // Pokemon Owned
 var pokemonOwned = new PokemonOwned();
@@ -23,14 +28,22 @@ $('#wildPokemonOnClick').click((ev) => {
 	if (wildPokemonHealth > playerAttack) {
 		wildPokemonHealth = wildPokemonHealth - playerAttack;
 		wildPokemon.setHealth(wildPokemonHealth);
-	
+		
 	} else {
+		resetWildPokemon();
 		var playerBank = player.getBank();	
-		wildPokemon.resetHealth();
 		playerBank = playerBank + 1;
 		player.setBank(playerBank);
+		console.log(wildPokemon);
+
 	}
 });
+
+function resetWildPokemon() {
+	randomWildPokemon = Math.floor(Math.random() * wildPokemonList.getWildPokemonList().length);
+	wildPokemon = wildPokemonList.getWildPokemonList()[randomWildPokemon];
+	wildPokemon.resetHealth();
+}
 
 
 // every second, attack the wildPokemon with pokemons dps and check if wildPokemon is dead
@@ -70,8 +83,9 @@ $('#click-lvl-up-btn').click(() => {
 function checkIfWildPokemonIsDead(player, wildPokemon) {
 	var wildPokemonHealth = wildPokemon.getHealth();
 	if (wildPokemonHealth <= 0) {
-		var playerBank = player.getBank();		
-		wildPokemon.resetHealth();
+		var playerBank = player.getBank();	
+		resetWildPokemon();
+	
 		playerBank = playerBank + 1;
 		player.setBank(playerBank);
 	}
